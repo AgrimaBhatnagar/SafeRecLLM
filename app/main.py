@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-
+from app.hybrid import hybrid_recommendations
 from app.retrieval import retrieve
 
 app = FastAPI()
@@ -22,3 +22,11 @@ def recommend(
         orient="records"
     )
 
+@app.get("/recommend/user/{user_id}")
+def recommend_user(user_id: int):
+
+    return hybrid_recommendations(
+        user_id
+    ).to_dict(
+        orient="records"
+    )
