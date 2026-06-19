@@ -1,41 +1,53 @@
 # SafeRecLLM
 
-Hybrid Recommendation System built using FastAPI, Collaborative Filtering, Semantic Retrieval, and MovieLens data.
+Hybrid Recommendation System built using FastAPI, Collaborative Filtering, Popularity Ranking, Docker, Kubernetes, and MovieLens data.
+
+---
 
 ## Overview
 
-SafeRecLLM is a production-oriented recommendation system that combines multiple recommendation strategies to generate high-quality personalized recommendations.
+SafeRecLLM is a production-oriented recommendation platform that combines multiple recommendation strategies to generate personalized movie recommendations.
 
 The project demonstrates:
 
 - Collaborative Filtering
 - Popularity-Based Ranking
-- Semantic Retrieval
-- Hybrid Recommendation Pipelines
-- FastAPI Deployment
+- Hybrid Recommendation Systems
+- FastAPI Backend Development
 - Docker Containerization
-- GCP Deployment
+- Kubernetes Deployment
+- Google Cloud Platform Deployment
+- Query Tracking and Monitoring Foundations
 
 ---
 
 ## Architecture
 
+```text
 User Request
       │
       ▼
 FastAPI API
       │
       ▼
-Hybrid Recommender
+Hybrid Recommendation Engine
  ├── Collaborative Filtering
  ├── Popularity Ranking
- └── Semantic Retrieval
+ ├── Safety Layer
+ └── Explanation Layer
       │
       ▼
-Filtered Recommendations
+Recommendation Results
       │
       ▼
-Explanations + Results
+Docker Container
+      │
+      ▼
+Kubernetes Deployment
+      │
+      ▼
+Service Exposure
+```
 
 ---
 
@@ -43,33 +55,36 @@ Explanations + Results
 
 ### Collaborative Filtering
 
-Finds users with similar preferences and recommends highly-rated content from those users.
+Identifies users with similar interests and recommends highly-rated content based on collective preferences.
 
 ### Popularity Ranking
 
-Ranks content using:
+Ranks movies using:
 
 - Average Rating
 - Rating Count
-- Weighted Score
-
-### Semantic Retrieval
-
-Uses embedding-based retrieval to find content relevant to user interests.
+- Weighted Scoring
 
 ### Hybrid Recommendation
 
 Combines:
 
 - Collaborative Filtering
-- Popularity Ranking
-- Semantic Search
+- Popularity-Based Ranking
 
-to improve recommendation quality.
+to improve recommendation quality and robustness.
 
 ### Safety Layer
 
-Applies filtering and validation before returning recommendations.
+Filters recommendation outputs before serving results.
+
+### Explainability
+
+Provides explanations describing why a recommendation was selected.
+
+### Tracking
+
+Tracks recommendation requests and system usage for future monitoring and analytics.
 
 ---
 
@@ -96,22 +111,59 @@ https://grouplens.org/datasets/movielens/
 - Python
 - FastAPI
 
-### Machine Learning
+### Data Processing
 
 - Pandas
 - NumPy
-- Scikit-Learn
-- Sentence Transformers
-- FAISS
 
-### Deployment
+### Recommendation Systems
+
+- Collaborative Filtering
+- Popularity-Based Ranking
+- Hybrid Recommendation Engine
+
+### Infrastructure
 
 - Docker
-- Google Cloud Platform
+- Kubernetes
+- Google Cloud Platform (GCP)
 
 ### Experiment Tracking
 
 - MLflow
+
+### Version Control
+
+- Git
+- GitHub
+
+---
+
+## Project Structure
+
+```text
+SafeRecLLM/
+│
+├── app/
+│   ├── main.py
+│   ├── collaborative.py
+│   ├── popularity.py
+│   ├── hybrid.py
+│   ├── retrieval.py
+│   ├── safety.py
+│   ├── explain.py
+│   ├── feedback.py
+│   ├── tracking.py
+│   └── data_loader.py
+│
+├── k8s/
+│   ├── deployment.yaml
+│   └── service.yaml
+│
+├── Dockerfile
+├── requirements.txt
+└── README.md
+```
 
 ---
 
@@ -123,7 +175,7 @@ https://grouplens.org/datasets/movielens/
 GET /
 ```
 
-Response:
+Response
 
 ```json
 {
@@ -132,21 +184,21 @@ Response:
 }
 ```
 
+---
+
 ### User Recommendations
 
 ```http
 GET /recommend/user/{user_id}
 ```
 
-Example:
+Example
 
 ```http
 GET /recommend/user/1
 ```
 
----
-
-## Example Output
+Example Response
 
 ```json
 [
@@ -161,9 +213,9 @@ GET /recommend/user/1
 
 ---
 
-## Local Setup
+## Local Development
 
-Clone repository:
+Clone the repository:
 
 ```bash
 git clone https://github.com/AgrimaBhatnagar/SafeRecLLM.git
@@ -185,66 +237,147 @@ Install dependencies:
 pip install -r requirements.txt
 ```
 
-Run API:
+Run the application:
 
 ```bash
 uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+Test:
+
+```bash
+curl http://localhost:8000/
 ```
 
 ---
 
 ## Docker
 
-Build image:
+Build Docker image:
 
 ```bash
 docker build -t saferec .
 ```
 
-Run container:
+Run Docker container:
 
 ```bash
 docker run -p 8000:8000 saferec
 ```
+
+Verify:
+
+```bash
+curl http://localhost:8000/
+```
+
+---
+
+## Kubernetes
+
+Create Deployment:
+
+```bash
+kubectl apply -f k8s/deployment.yaml
+```
+
+Create Service:
+
+```bash
+kubectl apply -f k8s/service.yaml
+```
+
+Verify deployment:
+
+```bash
+kubectl get deployments
+```
+
+Verify pods:
+
+```bash
+kubectl get pods
+```
+
+Verify services:
+
+```bash
+kubectl get svc
+```
+
+---
+
+## Screenshots
+
+### Kubernetes Deployment
+
+_Add screenshot here_
+
+### Running Pods
+
+_Add screenshot here_
+
+### Docker Container
+
+_Add screenshot here_
+
+### API Response
+
+_Add screenshot here_
+
+---
+
+## Key Learnings
+
+- Recommendation System Design
+- Collaborative Filtering
+- Ranking Algorithms
+- API Development with FastAPI
+- Docker Containerization
+- Kubernetes Deployments and Services
+- Cloud Infrastructure Basics
+- GitHub Workflow and Version Control
 
 ---
 
 ## Future Improvements
 
 - Matrix Factorization (SVD)
-- Real-Time User Embeddings
+- Neural Collaborative Filtering
+- Embedding-Based Retrieval
+- FAISS Semantic Search
 - Reinforcement Learning Ranking
-- LLM-Based Explanations
-- A/B Testing Framework
-- Multi-Agent Recommendation Pipeline
+- Real-Time User Profiles
+- Prometheus Monitoring
+- Grafana Dashboards
+- CI/CD Pipelines with GitHub Actions
 
 ---
 
-## Project Status
+## Resume Highlights
 
-Current Version: v1.0
-
-Implemented:
-
-- FastAPI Service
-- Collaborative Filtering
-- Popularity Ranking
-- Hybrid Recommendation Engine
-- Docker Support
-- GCP Deployment
+- Built a hybrid recommendation platform using FastAPI and MovieLens data.
+- Implemented collaborative filtering and popularity-based ranking algorithms.
+- Containerized services using Docker.
+- Deployed recommendation services using Kubernetes Deployments and Services.
+- Managed cloud infrastructure on Google Cloud Platform.
+- Developed modular recommendation pipelines with safety and explainability components.
 
 ---
 
 ## Author
 
-Agrima Bhatnagar
+**Agrima Bhatnagar**
 
-IIT Madras BS in Data Science and Applications
+IIT Madras — BS in Data Science and Applications
 
 Interests:
 
 - Machine Learning
 - Recommendation Systems
 - Generative AI
+- MLOps
 - Distributed Systems
 - Applied AI Engineering
+
+GitHub: https://github.com/AgrimaBhatnagar
