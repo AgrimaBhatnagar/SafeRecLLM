@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: saferec
+
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: saferec
+
+  template:
+    metadata:
+      labels:
+        app: saferec
+
+    spec:
+      containers:
+      - name: saferec
+        image: saferec:latest
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 8000
+

@@ -4,3 +4,4 @@ __pycache__/
 .env
 datasets/
 mlflow.db
+k8s/minikube-linux-amd64
