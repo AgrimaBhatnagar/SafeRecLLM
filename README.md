@@ -311,19 +311,19 @@ kubectl get svc
 
 ### Kubernetes Deployment
 
-_Add screenshot here_
+<img width="717" height="85" alt="Screenshot 2026-06-19 141445" src="https://github.com/user-attachments/assets/82060709-a6a1-4cb2-b78d-5d9f53d2b019" />
 
 ### Running Pods
 
-_Add screenshot here_
+<img width="681" height="108" alt="Screenshot 2026-06-19 141504" src="https://github.com/user-attachments/assets/fdec4701-48e2-4628-bf51-d44ac0a81c9c" />
 
 ### Docker Container
 
-_Add screenshot here_
+<img width="1877" height="170" alt="image" src="https://github.com/user-attachments/assets/647094f3-cddd-454f-8c94-14489cbf5934" />
 
 ### API Response
 
-_Add screenshot here_
+<img width="1896" height="208" alt="image" src="https://github.com/user-attachments/assets/8d6fbc27-42b9-4f8c-8723-ed25d1d34cfe" />
 
 ---
 
